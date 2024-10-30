@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from accounts.views import index
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -36,6 +37,8 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('api/', include('accounts.urls', namespace='accounts')),
+    path('api/accounts/', include('accounts.urls', namespace='accounts')),  # Accounts API
+    path('api/products/', include('product.urls', namespace='product')),  # Product API
 ]

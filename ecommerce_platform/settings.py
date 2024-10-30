@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
 
-    "accounts.apps.AccountsConfig",
+    "accounts",
+    "product"
 ]
 
 MIDDLEWARE = [
@@ -86,11 +87,23 @@ WSGI_APPLICATION = 'ecommerce_platform.wsgi.application'
 #     }
 # }
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:password@localhost:5432/sparks_db")
+# DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:password@localhost:5432/sparks_db")
+#
+# DATABASES = {
+#     'default': dj_database_url.parse(DATABASE_URL)
+# }
 
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'sparks_db'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
+        'HOST': os.environ.get('DB_HOST', 'db'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
 }
+
 
 # JWT Config
 REST_FRAMEWORK = {
