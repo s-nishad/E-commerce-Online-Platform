@@ -88,22 +88,23 @@ WSGI_APPLICATION = 'ecommerce_platform.wsgi.application'
 # }
 
 # DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:password@localhost:5432/sparks_db")
-#
-# DATABASES = {
-#     'default': dj_database_url.parse(DATABASE_URL)
-# }
+DATABASE_URL = os.getenv("DATABASE_URL",
+                         "postgresql://nishad:uI936qp2lFH1yYh0wfenrOBQfl4siVUX@dpg-csh9f5bqf0us73b0chvg-a.oregon-postgres.render.com/sparks_db")
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'sparks_db'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
-        'HOST': os.environ.get('DB_HOST', 'db'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DB_NAME', 'sparks_db'),
+#         'USER': os.environ.get('DB_USER', 'nishad'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD', 'uI936qp2lFH1yYh0wfenrOBQfl4siVUX'),
+#         'HOST': os.environ.get('DB_HOST', 'dpg-csh9f5bqf0us73b0chvg-a'),
+#         'PORT': os.environ.get('DB_PORT', '5432'),
+#     }
+# }
 
 # JWT Config
 REST_FRAMEWORK = {
@@ -136,7 +137,6 @@ SWAGGER_SETTINGS = {
     },
     'USE_SESSION_AUTH': False,
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
