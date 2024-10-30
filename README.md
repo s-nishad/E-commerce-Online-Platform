@@ -18,7 +18,6 @@ E-commerce Online Platform project in Django REST API for register, login, manag
 - **API documentation** with Swagger UI and Redoc.
 - **Dockerized** for isolated development and deployment.
 - **PostgreSQL** for database management.
-- **Flexible** many-to-many and one-to-one relationships between models.
 
 ## Technologies Used
 
